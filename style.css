@@ -1,0 +1,21 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#main-header {
+    background-color: rgb(40, 39, 39);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    padding-bottom: 23px;
+    padding-top: 1px;
+    text-align: center;
+}
+
+#start-game {
+    width: 155px;
+    height: 40px;
+    font-size: 16px;
+    margin-top: 6px;
+}

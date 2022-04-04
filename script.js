@@ -1,10 +1,26 @@
 var startBtn = document.getElementById("startGame");
-console.log(startBtn);
 startBtn.addEventListener("click", runGame);
+var rTime = document.getElementById("remainingTime");
+var winsDisplay = document.getElementById("numberOfWins");
+var loseDisplay = document.getElementById("numberOfLosses");
+var timer = 10;
+var wins = 0;
+var losses = 0;
+var isWin = false;
+
+
 
 
 function runGame(e) {
-    // The pool of words that will be selected at random
+    
+    var counter = 0;
+    timer = 10;
+    rTime.textContent = "Time Left: " + timer;
+
+//Start timer function
+startTimer();
+
+// The pool of words that will be selected at random
 var wordPool = ['INDEX', 'STYLE', 'SCRIPT', 'GUESS', 'BUTTON', 'ZIMBABWE', 'OAKLAND', 'DINOSAUR', 'FARLEY'];
 
 //Creating an empty array that will be filled with the number of dashes as the word chosen
@@ -20,53 +36,84 @@ var displayString = "";
 //Also create a string of dashes that we can display on the webpage
 for(var i = 0; i < chosenWord.length; i++) {
     dashArray[i] = "-";
-    displayString = dashArray.join("");
+    
 }
+displayString = dashArray.join("");
 
-console.log(displayString);
+// console.log(displayString);
 
 
-//Create new h3 using the dashArray
-var hiddenWord = document.createElement('h3');
-var innertext = document.createTextNode(displayString);
-var insideWordBox = document.getElementById("innerWordBox"); //parent of new h3
-
-//updating parent and child of hiddenword (h3)
-hiddenWord.appendChild(innertext);
-insideWordBox.appendChild(hiddenWord);
-
-//Styling the header
-hiddenWord.style.color = "black";
-hiddenWord.style.textAlign = "center";
-hiddenWord.style.marginTop = "65px";
+//Change h3 to our displayString
+var hiddenWord = document.getElementById("theWord");
 hiddenWord.style.fontSize = "75px";
+hiddenWord.innerHTML = displayString;
+// console.log(hiddenWord);
+
 
 
 document.addEventListener("keypress", function checkForMatch(e) {
     //Save pressed key in a variable
     var KeyPressed = e.key.toUpperCase();
-    console.log(KeyPressed);
+
+    var dashCount = chosenWord.length;
+
 
     //Make algorithm to check and replace key pressed with dashes
-
     for(var x=0; x<chosenWord.length; x++)
     {
         if((KeyPressed.toUpperCase()) == chosenWord[x])
         {
             dashArray[x] = KeyPressed.toUpperCase();
-            console.log(dashArray.join(""));
-            // displayString.innerHTML = dashArray.join("");
-            
+            displayString = dashArray.join("");
+            hiddenWord.textContent = displayString;
         }
+        
+    }  
+
+    //Win condition
+    // var dashCount = chosenWord.length;
+
+for(var y =0; y<chosenWord.length; y++)
+{
+    if(displayString[y] != "-")
+    {
+        dashCount --;
+        console.log("dashcount is " + dashCount);
+
     }
 
-    
-    
-})
-
+}
+if(dashCount == 0)
+{
+    wins++;
+    winsDisplay.textContent = "Wins: " + wins;
 
 }
 
+})
 
 
 
+function startTimer() {
+    var setTime = setInterval(function() {
+        
+        
+    if(timer > 0)
+    {
+        
+        timer--;
+        rTime.textContent = "Time Left: " + timer;
+    // console.log(timer);
+    }
+    else {
+        clearInterval(setTime);
+        losses++;
+        loseDisplay.textContent = "Losses: " + losses;
+        return;
+    }
+
+}, 1000)
+}
+
+
+}

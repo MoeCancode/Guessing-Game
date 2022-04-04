@@ -56,6 +56,13 @@ body {
     height: 180px;
 }
 
+h3 {
+    color: black;
+    text-align: center;
+    font-size: 45px;
+    margin-top: 55px;
+}
+
 #stats {
     background-color: rgb(40, 39, 39);
     margin-bottom: 8px;

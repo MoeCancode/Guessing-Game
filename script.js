@@ -19,8 +19,8 @@ var displayString = "";
 //Fill dashArray with as many dashes as our chosen word's length
 //Also create a string of dashes that we can display on the webpage
 for(var i = 0; i < chosenWord.length; i++) {
-    dashArray[i] = "_";
-    displayString = displayString + "-";
+    dashArray[i] = "-";
+    displayString = dashArray.join("");
 }
 
 console.log(displayString);
@@ -29,18 +29,40 @@ console.log(displayString);
 //Create new h3 using the dashArray
 var hiddenWord = document.createElement('h3');
 var innertext = document.createTextNode(displayString);
-var insideWordBox = document.getElementById("innerWordBox");
+var insideWordBox = document.getElementById("innerWordBox"); //parent of new h3
 
-//console.log(innertext);
+//updating parent and child of hiddenword (h3)
 hiddenWord.appendChild(innertext);
 insideWordBox.appendChild(hiddenWord);
 
+//Styling the header
 hiddenWord.style.color = "black";
 hiddenWord.style.textAlign = "center";
 hiddenWord.style.marginTop = "65px";
 hiddenWord.style.fontSize = "75px";
 
 
+document.addEventListener("keypress", function checkForMatch(e) {
+    //Save pressed key in a variable
+    var KeyPressed = e.key.toUpperCase();
+    console.log(KeyPressed);
+
+    //Make algorithm to check and replace key pressed with dashes
+
+    for(var x=0; x<chosenWord.length; x++)
+    {
+        if((KeyPressed.toUpperCase()) == chosenWord[x])
+        {
+            dashArray[x] = KeyPressed.toUpperCase();
+            console.log(dashArray.join(""));
+            // displayString.innerHTML = dashArray.join("");
+            
+        }
+    }
+
+    
+    
+})
 
 
 }

@@ -6,7 +6,7 @@ body {
 
 #main-header {
     background-color: rgb(40, 39, 39);
-    border-radius: 10px;
+    /* border-radius: 10px; */
     margin-bottom: 8px;
     padding-bottom: 23px;
     padding-top: 1px;
@@ -14,8 +14,52 @@ body {
 }
 
 #start-game {
-    width: 155px;
-    height: 40px;
+    width: 175px;
+    height: 50px;
     font-size: 16px;
     margin-top: 6px;
+    background-color: beige;
+    font-size: x-large;
+    font-weight: bolder;
+    border-radius: 8px;
+}
+
+#game-section h2 {
+    text-align: center;
+    padding: 35px;
+
+}
+
+#game-section {
+    margin-bottom: 45px;
+}
+
+#wordBox-container {
+    display: flex;
+    justify-content: center;
+}
+
+#word-box {
+    width: 550px;
+    height: 250px;
+    background-color: beige;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#innerWordBox {
+    border: solid 2px black;
+    margin: 20px;
+    width: 430px;
+    height: 180px;
+}
+
+#stats {
+    background-color: rgb(40, 39, 39);
+    margin-bottom: 8px;
+    padding-bottom: 23px;
+    padding-top: 1px;
+    text-align: center;
 }

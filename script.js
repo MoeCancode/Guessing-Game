@@ -18,7 +18,24 @@ function runGame(e) {
     rTime.textContent = "Time Left: " + timer;
 
 //Start timer function
-startTimer();
+var setTime = setInterval(function() {
+        
+        
+    if(timer > 0)
+    {
+        
+        timer--;
+        rTime.textContent = "Time Left: " + timer;
+    // console.log(timer);
+    }
+    else {
+        clearInterval(setTime);
+        losses++;
+        loseDisplay.textContent = "Losses: " + losses;
+        return;
+    }
+
+}, 1000)
 
 // The pool of words that will be selected at random
 var wordPool = ['INDEX', 'STYLE', 'SCRIPT', 'GUESS', 'BUTTON', 'ZIMBABWE', 'OAKLAND', 'DINOSAUR', 'FARLEY'];
@@ -83,37 +100,15 @@ for(var y =0; y<chosenWord.length; y++)
     }
 
 }
-if(dashCount == 0)
+if(dashCount == 0 && timer != 0)
 {
     wins++;
     winsDisplay.textContent = "Wins: " + wins;
+    clearInterval(setTime);
 
 }
 
 })
-
-
-
-function startTimer() {
-    var setTime = setInterval(function() {
-        
-        
-    if(timer > 0)
-    {
-        
-        timer--;
-        rTime.textContent = "Time Left: " + timer;
-    // console.log(timer);
-    }
-    else {
-        clearInterval(setTime);
-        losses++;
-        loseDisplay.textContent = "Losses: " + losses;
-        return;
-    }
-
-}, 1000)
-}
 
 
 }
